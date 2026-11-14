@@ -24,7 +24,7 @@ API REST (interface que permite a integração entre sistemas) de carteira digit
 - Cada usuário mexendo apenas no próprio dinheiro
 
 ## Stack planejada
-Java 26, PostgreSQL, Spring Boot, Maven, JUnit 5, Docker.
+Java 21, PostgreSQL, Spring Boot, Maven, JUnit 5, Docker.
 
 ## Status
 Em construção. Fase atual: definição de escopo e regras de negócio (v0.0). Proxímo passo: modelagem do domínio em Java puro.
