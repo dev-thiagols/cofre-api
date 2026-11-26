@@ -33,8 +33,39 @@ public final class Money {
         return this.valor.signum() > 0;
     }
 
+    public static String gerarExtrato(String titular, Money[] movimentos) {
+        StringBuilder extrato = new StringBuilder();
+        extrato.append("Extrato de ").append(titular).append("\n").append("-------------------------------\n");
+        int counter = 0;
+        Money total = Money.zero();
+        for(Money movimento : movimentos) {
+            counter++;
+            total = total.somar(movimento);
+            extrato.append(String.format("%-15s%12s%n", "Movimento " + counter, movimento));
+        }
+        extrato.append("-------------------------------\n").append(String.format("%-15s%12s", "Total ", total));
+
+        return extrato.toString();
+    }
+
     @Override
-	public String toString() {
+    public String toString() {
         return "R$ " + valor.toString().replace('.', ',');
-	}
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Money outro)) {
+            return false;
+        }
+        return this.valor.equals(outro.valor);
+    }
+
+    @Override
+    public int hashCode() {
+        return valor.hashCode();
+    }
 }

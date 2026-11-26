@@ -55,4 +55,20 @@ public class Conta {
         sacar(valor);
         destino.depositar(valor);
     }
+
+    @Override
+    public int hashCode() {
+        return numero;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Conta outra)) {
+            return false;
+        }
+        return this.numero == (outra.numero);
+    }
 }
